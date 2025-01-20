@@ -1,0 +1,1056 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ece5dd;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #000000; /* Ganti warna sidebar menjadi hitam */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.sidebar .section {
+    margin-bottom: 20px;
+}
+
+.sidebar .section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffffff; /* Warna teks di sidebar tetap putih */
+}
+
+.sidebar .history {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #ffffff20; /* Warna latar belakang riwayat tetap seperti semula */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .history div {
+    background-color: #ffffff10;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar .history div:hover {
+    background-color: #ffffff30;
+}
+
+.chatbot-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: white;
+}
+
+.chat-header {
+    background-color: #075e54;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    max-width: 75%;
+}
+
+.message.user {
+    flex-direction: row-reverse; /* Memastikan elemen diatur dari kanan ke kiri */
+    text-align: left; /* Teks sejajar ke kanan */
+    align-self: flex-end; /* Pesan ditempatkan ke sisi kanan container */
+    margin-left: auto; /* Mendorong pesan ke kanan */
+    margin-right: 5px; /* Memberi jarak dari tepi kanan */
+}
+
+.message.user .content {
+    background-color: #075e54; /* Warna latar belakang pesan pengguna */
+    color: white; /* Warna teks */
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 5px 0; /* Jarak antar pesan */
+    max-width: 80%; /* Batas lebar pesan */
+}
+
+.message.bot .content {
+    background-color: #07968a; /* Warna hijau tosca */
+    color: white; /* Warna teks tetap */
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-left: 10px;
+    max-width: 80%;
+}
+
+
+.message.user .content { 
+    background-color: #075e54;
+    color: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-right: 15px;
+    max-width: 80%;
+}
+
+.message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+    background-color: #f5f5f5;
+}
+
+.chat-input input:focus {
+    background-color: #ffffff;
+}
+
+.chat-input button {
+    margin-left: 15px;
+    padding: 12px 20px;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.chat-input button:hover {
+    background-color: #128c7e;
+}
+
+.chat-input input:focus {
+    outline: none;
+}
+
+.chat-input button:active {
+    transform: scale(0.95);
+}
+
+.chat-input button {
+    transition: background-color 0.3s ease;
+}
+
+.voice-recording {
+    background-color: #075e54;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-left: 10px;
+}
+
+.voice-recording:active {
+    transform: scale(0.9);
+}
+
+.voice-message {
+    display: flex;
+    align-items: center;
+}
+
+.voice-message audio {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.chat-header {
+    background-color: #075e54;
+    color: white;
+    padding: 20px;
+    font-size: 1.8em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-header .logo {
+    width: 50px;             /* Ukuran logo */
+    height: 50px;            /* Ukuran logo */
+    border-radius: 60%;      /* Membuat logo berbentuk lingkaran */
+    object-fit: cover;       /* Menjaga agar gambar tidak terdistorsi */
+}
+
+/* CSS Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #000000; /* Ganti warna sidebar menjadi hitam */
+    color: rgb(168, 251, 3);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center; /* Menyusun logo dan teks sejajar */
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    width: 40px; /* Ukuran logo */
+    height: 40px; /* Ukuran logo */
+    border-radius: 50%; /* Membuat logo berbentuk lingkaran */
+    object-fit: cover; /* Menjaga agar gambar tidak terdistorsi */
+    margin-left: 40px; /* Memberikan jarak sedikit ke kanan */
+    margin-right: 10px; /* Memberikan jarak antara logo dan teks */
+}
+
+
+.sidebar h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    margin: 0; /* Menghilangkan margin di sekitar h2 */
+}
+
+/* Styling untuk bagian riwayat chat dan FAQ */
+.sidebar .section {
+    margin-bottom: 20px;
+}
+
+.sidebar .section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: rgb(168, 251, 3); /* Warna teks di sidebar tetap putih */
+}
+
+.sidebar .history {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #ffffff20; /* Warna latar belakang riwayat tetap seperti semula */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .history div {
+    background-color: #ffffff10;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar .history div:hover {
+    background-color: #ffffff30;
+}
+
+.faq-question {
+    font-size: 16px; /* Ukuran lebih kecil untuk pertanyaan */
+    font-weight: bold;
+}
+
+.faq-answer {
+    font-size: 15px; /* Ukuran lebih kecil untuk jawaban */
+    margin-bottom: 10px; /* Spasi antar paragraf */
+}
+
+/* Tambahkan animasi untuk sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    transform: translateX(0); /* Posisi default: terlihat */
+    transition: transform 0.3s ease; /* Animasi untuk kemunculan */
+    z-index: 1000; /* Pastikan sidebar berada di atas elemen lain */
+}
+
+.sidebar.hidden {
+    transform: translateX(-250px); /* Geser sidebar ke luar layar */
+}
+
+
+
+.sidebar-header {
+    display: flex; /* Gunakan flexbox untuk tata letak horizontal */
+    align-items: center; /* Menyelaraskan elemen secara vertikal */
+    padding: 10px;
+}
+
+.sidebar-header h2 {
+    flex-grow: 1; /* Membuat tulisan "Riwayat Chat" mendorong elemen lainnya ke kanan */
+    font-size: 22px; /* Ukuran teks */
+    margin: 0; /* Hapus margin default */
+    color: white; /* Warna teks */
+}
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    font-size: 24px; /* Ukuran ikon */
+    color: white; /* Warna ikon */
+    cursor: pointer;
+    margin-left: 5px; /* Jarak antara tulisan "Riwayat Chat" dan tombol */
+    margin-top: 12px; /* Menggeser ikon ke bawah */
+}
+
+
+
+
+
+
+.sidebar.hidden {
+    transform: translateX(-250px); /* Menggeser sidebar keluar layar */
+    transition: transform 0.3s ease;
+}
+
+.sidebar {
+    transition: transform 0.3s ease; /* Animasi untuk membuka/menutup */
+    position: relative;
+}
+
+.chatbot-container {
+    flex: 1;
+    transition: margin-left 0.3s ease; /* Agar konten utama tidak "bergeser" saat sidebar ditutup */
+}
+
+.header-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+/* Pastikan posisi relatif untuk konten bot */
+.message.bot .content {
+    position: relative;
+}
+
+/* Gaya balon jawaban sistem */
+.message.bot .content {
+    position: relative;
+    padding-bottom: 30px; /* Memberikan ruang untuk ikon speaker */
+    line-height: 1.5; /* Menambah keterbacaan */
+}
+
+/* Gaya balon jawaban sistem */
+.message.bot .content {
+    position: relative;
+    padding-bottom: 30px; /* Memberikan ruang untuk ikon speaker */
+    line-height: 1.5; /* Menambah keterbacaan */
+}
+
+/* Gaya ikon speaker */
+.tts-icon {
+    position: absolute;
+    bottom: 5px; /* Jarak dari bawah */
+    right: 10px; /* Jarak dari kanan */
+    font-size: 1rem; /* Ukuran ikon */
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.tts-icon:hover {
+    color: #000; /* Warna berubah saat hover */
+}
+
+
+.voice-recording {
+    transition: transform 0.2s ease;
+}
+
+.voice-recording.recording {
+    transform: scale(1.2); /* Membesarkan ikon mikrofon saat sedang merekam */
+    animation: pulse 1s infinite; /* Animasi berdenyut */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.typing-animation {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.typing-animation span {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+    animation: typing 1.5s infinite;
+}
+
+.typing-animation span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-animation span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-animation span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 80%, 100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Tambahkan styling untuk animasi titik tiga */
+.message.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.message.typing-indicator img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dots-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dots-container .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+.dots-container .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dots-container .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 80%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+
+/* Animasi titik tiga */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.typing-indicator img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.typing-indicator .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    background-color: #ccf405; /* Ubah warna menjadi hitam */
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+.typing-indicator .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 80%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+
+/* Pastikan warna titik tiga menjadi hitam */
+.typing-indicator .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color:#07968a; /* Warna hijau tosca */
+    display: inline-block;
+    animation: blink 1.5s infinite ease-in-out;
+    margin-right: 4px;
+}
+
+/* Animasi untuk titik tiga */
+@keyframes blink {
+    0%, 20% {
+        opacity: 0;
+    }
+    50%, 100% {
+        opacity: 1;
+    }
+}
+
+.history-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.history-item p {
+    margin: 5px 0;
+}
+
+.history-item:hover {
+    background-color: #ececec;
+}
+
+/* CSS untuk sidebar yang disembunyikan */
+.sidebar.hidden {
+    display: none;
+}
+
+/* CSS untuk chat container yang diperbesar ketika sidebar disembunyikan */
+.chatbot-container.fullscreen {
+    width: 100%; /* Menjadi full screen */
+    margin-left: 0;
+}
+
+/* Pengaturan dasar untuk elemen-elemen lain */
+.chatbot-container {
+    width: calc(100% - 250px); /* Menyisakan ruang untuk sidebar */
+    transition: all 0.3s ease; /* Animasi transisi */
+}
+
+.sidebar {
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+/* CSS untuk sidebar yang disembunyikan */
+.sidebar.hidden {
+    display: none;
+}
+
+/* CSS untuk chat container yang diperbesar ketika sidebar disembunyikan */
+.chatbot-container.fullscreen {
+    width: 100%; /* Menjadi full screen */
+    margin-left: 0;
+}
+
+/* Pengaturan dasar untuk elemen-elemen lain */
+.chatbot-container {
+    width: calc(100% - 250px); /* Menyisakan ruang untuk sidebar */
+    transition: all 0.3s ease; /* Animasi transisi */
+}
+
+/* Pastikan tombol toggle tetap terlihat dan tidak terpengaruh oleh sidebar */
+#toggleSidebarBtn {
+    position: fixed;
+    top: 20px; /* Atur posisi tombol sesuai kebutuhan */
+    left: 20px; /* Atur posisi tombol sesuai kebutuhan */
+    z-index: 1000; /* Agar tombol tetap di atas elemen lain */
+}
+
+/* Pastikan tombol toggle tetap di atas dan di luar sidebar */
+#toggleSidebarBtn {
+    position: fixed;  /* Posisi tetap di layar */
+    top: 20px;        /* Sesuaikan posisi */
+    left: 20px;       /* Sesuaikan posisi */
+    z-index: 1000;    /* Agar tombol tetap di atas elemen lain */
+    background: transparent;  /* Menghilangkan latar belakang tombol */
+    border: none;           /* Menghilangkan border tombol */
+    font-size: 24px;        /* Ukuran font yang lebih besar untuk ikon */
+    cursor: pointer;       /* Agar tampak seperti tombol yang dapat diklik */
+}
+
+/* Efek animasi untuk ikon speaker */
+.tts-icon {
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transisi halus saat berubah ukuran */
+}
+
+.tts-icon.playing {
+    transform: scale(1.5); /* Memperbesar ikon saat suara diputar */
+}
+
+/* Ukuran awal ikon speaker */
+.tts-icon {
+    font-size: 20px;  /* Ukuran lebih kecil dari sebelumnya */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transisi halus saat berubah ukuran */
+}
+
+.tts-icon.playing {
+    transform: scale(1.5); /* Memperbesar ikon saat suara diputar */
+}
+
+/* Styling untuk ikon salin */
+.copy-icon {
+    position: absolute; /* Agar dapat diposisikan secara bebas */
+    bottom: 8px; /* Jarak dari bagian bawah balon chat */
+    right: 40px; /* Geser ke kiri dari pojok kanan */
+    font-size: 16px; /* Ukuran ikon */
+    cursor: pointer; /* Pointer saat hover */
+    display: inline-block; /* Pastikan elemen memiliki tata letak inline */
+    transition: transform 0.2s ease, color 0.2s ease; /* Animasi saat interaksi */
+}
+
+/* Styling untuk ikon setelah berhasil menyalin */
+.copy-icon.success {
+    color: green; /* Warna centang hijau */
+    font-size: 16px; /* Tetap dengan ukuran yang sama */
+    transform: scale(1.2); /* Sedikit membesar */
+    transition: transform 0.3s ease, color 0.3s ease; /* Animasi perubahan */
+}
+
+/* Kembali ke ikon default */
+.copy-icon.reset {
+    color: black; /* Kembali ke warna default */
+    transform: scale(1); /* Kembali ke ukuran semula */
+    transition: transform 0.3s ease, color 0.3s ease; /* Animasi kembali */
+}
+
+/* Styling untuk ikon speaker */
+.speaker-icon {
+    position: absolute; /* Agar tetap berada di pojok kanan bawah */
+    bottom: 5px; /* Jarak dari bagian bawah balon chat */
+    right: 5px; /* Tetap di ujung kanan */
+    font-size: 16px; /* Ukuran ikon */
+    cursor: pointer; /* Pointer saat hover */
+    display: inline-block; /* Pastikan elemen memiliki tata letak inline */
+    transition: transform 0.2s ease, color 0.2s ease; /* Animasi saat interaksi */
+}
+
+/* Styling untuk balon chat */
+.message.bot .content {
+    position: relative; /* Supaya ikon bisa diposisikan relatif terhadap content */
+    padding-bottom: 30px; /* Tambahkan ruang untuk ikon di bawah */
+}
+
+/* Pembungkus ikon untuk memastikan mereka sejajar */
+.icon-container {
+    position: absolute; /* Untuk menempatkan ikon di area tertentu */
+    bottom: 5px; /* Jarak dari bagian bawah balon chat */
+    right: 5px; /* Titik acuan dari kanan */
+    display: flex; /* Gunakan flexbox untuk sejajarkan ikon secara horizontal */
+    gap: 10px; /* Jarak antar ikon */
+    align-items: center; /* Pastikan ikon sejajar secara vertikal */
+}
+
+
+        .chat-input button,
+        .chat-input .voice-recording,
+        .chat-input .clear-input {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            margin-left: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .chat-input .voice-recording {
+            background-color: #034d03; /* Hijau tua yang lebih gelap */
+            color: #333;
+            border: 1px solid #ccc; /* Mengembalikan bingkai lingkaran */
+        }
+
+        .chat-input .clear-input {
+            background-color: rgb(193, 9, 9);
+            color: white;
+            border: 1px solid #ccc;
+        }
+
+        .chat-input button {
+            background-color: #1393d3;
+            color: white;
+            border: 1px solid #ccc; /* Konsistensi dengan ikon lainnya */
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Pastikan berada di atas elemen lain */
+            background-color: #fff;
+            padding: 10px;
+        }
+        
+        #toggleSidebarBtn {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .sidebar.hidden {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .chatbot-container.fullscreen {
+            margin-left: 0;
+            width: 100%;
+        }
+        
+   /* Gaya untuk pop-up */
+.confirmation-popup {
+    display: none; /* Pop-up disembunyikan secara default */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000; /* Menampilkan pop-up di atas elemen lainnya */
+}
+
+/* Gaya untuk tombol dalam pop-up */
+.popup-button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.yes-button {
+    background-color: #4CAF50; /* Warna hijau untuk 'Ya' */
+    color: white;
+    border: 2px solid #4CAF50; /* Bingkai hijau */
+}
+
+.no-button {
+    background-color: #f44336; /* Warna merah untuk 'Tidak' */
+    color: white;
+    border: 2px solid #f44336; /* Bingkai merah */
+}
+
+/* Gaya untuk ikon tempat sampah */
+#clearButton {
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+}
+   
+.chat-header {
+    font-family: 'Impact', sans-serif;  /* Gunakan font Bebas Neue untuk tulisan "Toyota Fix Care" */
+    font-weight: bold;                  /* Menambahkan ketebalan font */
+    font-size: 24px;                    /* Ukuran font yang lebih besar */
+}
+
+.toyota {
+    color: #c0990c; /* Warna emas untuk "Toyota" */
+}
+
+.fix-care {
+    color: #ffffff; /* Warna putih untuk "Fix Care" */
+}
+
+
+/* Font pada elemen lain di sidebar tetap menggunakan font default */
+.sidebar-header {
+    font-family: 'Arial', sans-serif;  /* Atau font lainnya yang sudah ada */
+}
+
+.recording-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+}
+
+.recording-popup.hidden {
+    display: none;
+}
+
+.microphone-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.sound-wave {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.wave {
+    width: 5px;
+    height: 20px;
+    background: white;
+    animation: waveAnimation 1s infinite ease-in-out;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes waveAnimation {
+    0%, 100% {
+        height: 10px;
+    }
+    50% {
+        height: 30px;
+    }
+}
+
+.popup-menu {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+    padding: 10px;
+}
+
+.popup-option {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.popup-option:hover {
+    background-color: #f2f2f2;
+}
+
+.popup-menu {
+    position: absolute; /* Relatif terhadap layar */
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+    padding: 10px;
+    transform-origin: top left; /* Animasi keluar dari tombol hamburger */
+    animation: popup-enter 0.2s ease-in-out;
+}
+
+.popup-option {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.popup-option:hover {
+    background-color: #151414;
+}
+
+/* Animasi muncul */
+@keyframes popup-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-menu {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.popup-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    width: 200px; /* Pastikan semua opsi memiliki lebar yang sama */
+    margin: 5px 0; /* Memberikan jarak antar opsi */
+    background-color: #f8f8f8; /* Warna latar belakang opsi */
+    border-radius: 4px; /* Agar sudutnya lebih lembut */
+}
+
+.popup-option:hover {
+    background-color: #e0e0e0; /* Efek hover */
+}
+
+.popup-menu {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.popup-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    width: auto; /* Lebar otomatis sesuai dengan teks */
+    max-width: 200px; /* Lebar maksimal agar tidak terlalu lebar */
+    margin: 10px 0; /* Memberikan jarak antar opsi (menambah margin atas dan bawah) */
+    background-color: #f8f8f8; /* Warna latar belakang opsi */
+    border-radius: 4px; /* Agar sudutnya lebih lembut */
+    white-space: nowrap; /* Agar teks tidak terpotong */
+    overflow: hidden; /* Untuk mencegah teks keluar dari kotak */
+    text-overflow: ellipsis; /* Menambahkan tanda elipsis jika teks terlalu panjang */
+}
+
+.popup-option:hover {
+    background-color: #e0e0e0; /* Efek hover */
+}
+
+
+.popup-menu {
+    background-color: black; /* Mengubah latar belakang popup menjadi hitam */
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.popup-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    width: auto; /* Lebar otomatis sesuai dengan teks */
+    max-width: 200px; /* Lebar maksimal agar tidak terlalu lebar */
+    margin: 10px 0; /* Memberikan jarak antar opsi (menambah margin atas dan bawah) */
+    background-color: #333; /* Latar belakang opsi menjadi lebih gelap agar kontras */
+    color:  rgb(168, 251, 3); /* Mengubah teks menjadi warna emas */
+    border-radius: 4px; /* Agar sudutnya lebih lembut */
+    white-space: nowrap; /* Agar teks tidak terpotong */
+    overflow: hidden; /* Untuk mencegah teks keluar dari kotak */
+    text-overflow: ellipsis; /* Menambahkan tanda elipsis jika teks terlalu panjang */
+}
+
+.popup-option:hover {
+    background-color: #444; /* Warna saat opsi dihover menjadi sedikit lebih terang */
+    color: rgb(168, 251, 3); /* Warna teks tetap emas saat dihover */
+}

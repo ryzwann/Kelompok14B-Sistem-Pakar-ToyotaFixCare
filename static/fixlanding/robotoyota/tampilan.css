@@ -1,0 +1,368 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    background-color: #FFF; /* Background umum putih */
+}
+
+.navbar {
+position: fixed;
+top: 20px;
+right: 100px;
+display: flex;
+gap: 20px;
+font-size: 1.3rem;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+z-index: 10;
+border: 1px solid rgba(0, 0, 0, 0.4);
+padding: 8px 20px;
+border-radius: 10px;
+transition: all 0.3s ease;
+background: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Bayangan halus */
+}
+
+.navbar a {
+color: #ecf2f5;
+text-decoration: none;
+padding: 5px 15px;
+border-radius: 5px;
+transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+color: #FFD700;
+}
+
+.navbar .active {
+color: #000;
+background-color: #FFD700;
+box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+transform: scale(1.1);
+}
+
+
+/* Home Section: Background Image */
+#landing-page {
+    background: url('avanza.jpeg') no-repeat center center/cover; /* Gambar latar belakang */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
+    color: #FFF; /* Teks warna putih agar kontras dengan latar belakang */
+}
+
+.text-section {
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); /* Background sedikit transparan untuk kontras */
+    border-radius: 10px;
+}
+
+.text-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.text-section p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.get-started-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: #7ac0e3;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background-color: #7ac0e3;
+}
+
+.image-section {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* About Section: Full Background Color */
+#about-page {
+    background: linear-gradient(to bottom, #141414, #d7d6d6); /* Gradasi dari hitam ke abu-abu */
+    display: flex;
+    justify-content: center; /* Untuk memusatkan konten secara horizontal */
+    align-items: center; /* Untuk memusatkan konten secara vertikal */
+    text-align: left; /* Teks tetap rata kiri */
+    min-height: 100vh;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.about-content {
+display: flex;
+gap: 40px; /* Jarak antara teks dan gambar */
+align-items: center; /* Pastikan gambar dan teks sejajar */
+background: #4c4e4f; /* Latar belakang dalam menjadi warna emas */
+border: 5px solid #7ac0e3; /* Bingkai luar juga berwarna emas */
+border-radius: 10px; /* Sudut bingkai yang lebih bulat */
+padding: 40px;
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.about-text h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+color: #7ac0e3; /* Mengubah warna judul menjadi biru muda */
+}
+
+.about-text p {
+font-size: 1.2rem;
+line-height: 1.6;
+color: #FFF; /* Menjaga teks penjelasan tetap berwarna putih */
+}
+
+
+
+.about-content img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* FAQ Section */
+.faq-container {
+    background: linear-gradient(to bottom, #333, #222);
+    color: #FFF;
+    padding: 40px 20px;
+}
+
+.faq-container h1 {
+text-align: center;
+margin-bottom: 20px;
+color: #7ac0e3; /* Warna biru muda */
+}
+
+
+.faq-item {
+margin: 20px auto;
+max-width: 800px;
+background: #7ac0e3;
+padding: 15px;
+border-radius: 10px;
+border: 2px solid #7ac0e3; /* Bingkai warna biru */
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+transform: scale(1.02); /* Efek zoom kecil saat hover */
+box-shadow: 0 0 10px #7ac0e3; /* Cahaya biru saat hover */
+}
+
+.faq-question {
+font-size: 1.2rem;
+font-weight: bold;
+}
+
+.team-container {
+    background: linear-gradient(to bottom, #1b1a1a 50%, transparent 50%), url('avanza.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #FFF;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.team-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member {
+text-align: center;
+max-width: 300px;
+margin: 20px;
+background-color: #FFF; /* Background putih untuk setiap anggota tim */
+border: 5px solid #FFF; /* Bingkai putih di sekitar seluruh anggota tim */
+border-radius: 10px; /* Sudut bingkai yang lebih bulat */
+padding: 20px; /* Memberikan padding di dalam bingkai */
+box-sizing: border-box; /* Menghitung padding dan border dalam ukuran elemen */
+}
+
+.team-member img {
+width: 80%; /* Gambar lebih kecil */
+height: auto;
+border-radius: 10px; /* Sudut gambar juga dibulatkan */
+margin-bottom: 15px; /* Memberikan jarak antara gambar dan teks */
+}
+
+.team-member h3,
+.team-member p {
+color: #050505dc; /* Mengubah warna teks menjadi putih */
+margin: 0; /* Menghilangkan margin default untuk h3 dan p */
+}
+
+
+
+
+#team-page h1 {
+    color: #7ac0e3; /* Warna biru muda */
+    font-size: 2.0rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.team-member img {
+width: 150px;
+height: 150px;
+object-fit: cover; /* Memastikan gambar tetap terlihat rapi */
+/* border-radius: 50%; */ /* Komentar atau hapus properti ini untuk menjaga gambar tetap kotak */
+}
+
+.team-member {
+text-align: center;
+margin: 20px;
+}
+
+.team-member h3 {
+margin: 10px 0 5px;
+font-size: 1.2em;
+}
+
+.team-member p {
+font-size: 0.9em;
+color: #555;
+}
+
+.social-icons {
+margin-top: 10px;
+}
+
+.social-icons a {
+margin: 0 10px;
+color: #555;
+font-size: 1.5em;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.social-icons a:hover {
+color: #007bff; /* Warna biru saat hover */
+}
+
+.team-member {
+text-align: center;
+margin: 20px;
+padding: 10px; /* Tambahkan sedikit padding untuk ruang di dalam bingkai */
+border: 2px solid #7ac0e3; /* Menambahkan bingkai dengan warna biru */
+border-radius: 10px; /* Opsional: Tambahkan sudut membulat */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: Tambahkan bayangan untuk estetika */
+background-color: #f9f9f9; /* Opsional: Tambahkan warna latar belakang */
+}
+
+.team-member img {
+width: 150px;
+height: 150px;
+object-fit: cover;
+}
+
+.team-member h3 {
+margin: 10px 0 5px;
+font-size: 1.2em;
+}
+
+.team-member p {
+font-size: 0.9em;
+color: #555;
+}
+
+.social-icons {
+margin-top: 10px;
+}
+
+.social-icons a {
+margin: 0 10px;
+color: #555;
+font-size: 1.5em;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.social-icons a:hover {
+color: #007bff; /* Warna biru saat hover */
+}
+
+.faq-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+
+.faq-grid {
+display: flex;
+justify-content: space-between;
+gap: 20px;
+}
+
+.faq-column {
+flex: 1;
+}
+
+.faq-item {
+margin-bottom: 20px;
+}
+
+.faq-question {
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.faq-answer {
+margin-left: 20px;
+}
+
