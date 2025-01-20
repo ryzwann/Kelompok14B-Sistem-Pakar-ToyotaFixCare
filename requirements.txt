@@ -1,0 +1,15 @@
+protobuf==3.20.*
+langchain-huggingface==0.0.3
+langchain
+langchain_community
+langchain-google-genai
+python-dotenv
+langchain_experimental
+sentence-transformers
+langchain_chroma
+langchainhub
+pypdf
+rapidocr-onnxruntime
+flask
+pysqlite3-wheels
+chromadb
