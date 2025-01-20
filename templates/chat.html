@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Konsultasi</title>
+
+    <!-- Menambahkan font Russo One dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/speaker.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/salin.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/hapus.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/popup_mic.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}" defer></script>
+</head>
+<body>
+    
+    <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <img src="{{ url_for('static', filename='img/logoku.png') }}" alt="Logo Toyota Fix Care" class="sidebar-logo">
+        <h2>Riwayat Chat</h2>
+    </div>
+    <!-- Ikon hamburger -->
+    <button id="toggleSidebarBtn" class="hamburger-menu">☰</button>
+    <div class="section history" id="chatHistory">
+        <!-- Riwayat chat akan muncul di sini -->
+    </div>
+    <div class="section">
+        <h3>FAQ</h3>
+        <p class="faq-question">1. Apa itu Toyota Fix Care?</p>
+        <p class="faq-answer">Toyota Fix Care adalah sistem berbasis web untuk mendeteksi kerusakan pada mobil Toyota, khususnya Avanza, dengan solusi berbasis metode NLP.</p>
+        <p class="faq-question">2. Bagaimana cara menggunakan Toyota Fix Care?</p>
+        <p class="faq-answer">Pengguna cukup memasukkan gejala kerusakan mobil pada chat konsultasi maka sistem akan otomatis memberikan identifikasi kerusakan serta solusi perbaikan. Contoh pertanyaan " Mengapa mobil avanza saya tidak dapat dinyalakan saat hujan"</p>
+    </div>
+</div>
+
+<div class="chatbot-container">
+    <div class="chat-header">
+        <div id="headerHamburgerPlaceholder"></div>
+        <a href="{{ url_for('static', filename='fixlanding/robotoyota/tampilan.html') }}#landing-page">
+            <img src="{{ url_for('static', filename='img/logoku.png') }}" alt="Logo Toyota Fix Care" class="logo">
+        </a>        
+        Toyota Fix Care
+    </div>    
+    <div class="chat-messages" id="chatMessages">
+        <!-- Pesan sambutan akan di-load melalui JS -->
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Ketikan masalah kerusakan mobil anda disini...">
+        <button onclick="sendMessage()">➤</button>
+        <div class="voice-recording" id="micIcon" onclick="toggleRecording()">🎙️</div>
+        <div class="clear-input" id="trashIcon" onclick="showConfirmationPopup()">🗑️</div>
+    </div>
+</div>
+
+
+    <!-- Pop-up konfirmasi untuk menghapus chat -->
+    <div id="confirmationPopup" class="confirmation-popup">
+        <p>Apakah Anda yakin ingin menghapus pesan?</p>
+        <button id="confirmYes" class="popup-button yes-button">Ya</button>
+        <button id="confirmNo" class="popup-button no-button">Tidak</button>
+    </div>
+
+    <div id="recordingPopup" class="recording-popup hidden">
+        <div class="popup-content">
+            <div class="microphone-icon">🎤</div>
+            <p>Merekam suara...</p>
+            <div class="sound-wave">
+                <span class="wave"></span>
+                <span class="wave"></span>
+                <span class="wave"></span>
+            </div>
+        </div>
+    </div>
+    
+
+   
+</body>
+</html>
